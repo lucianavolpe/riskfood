@@ -7,10 +7,9 @@ document.getElementById('hamburger').addEventListener('click', function () {
 });
 
 
-// Genero il qr code - ho aggiunto il controllo typeof
-// perché senza di esso se mancava il file js andava in crash
+// Compongo l'indirizzo diretto del pdf della guida, così inquadrando il qr si apre subito il documento
 if (typeof QRCode !== 'undefined') {
-  var urlPagina = window.location.href.split('#')[0] + '#download';
+  var urlPagina = window.location.href.split('#')[0] + 'guida_rischio_ristorativo.pdf';
   new QRCode(document.getElementById('qrcode'), {
     text: urlPagina,
     width: 150,
