@@ -9,7 +9,7 @@ document.getElementById('hamburger').addEventListener('click', function () {
 
 // Compongo l'indirizzo diretto del pdf della guida, così inquadrando il qr si apre subito il documento
 if (typeof QRCode !== 'undefined') {
-  var urlPagina = window.location.href.split('#')[0] + 'guida_rischio_ristorativo.pdf';
+  var urlPagina = 'https://lucianavolpe.github.io/riskfood/guida_rischio_ristorativo.pdf';
   new QRCode(document.getElementById('qrcode'), {
     text: urlPagina,
     width: 150,
