@@ -44,7 +44,6 @@ function loadRiskPreset() {
   document.getElementById('pManual').value = valP;
   document.getElementById('dManual').value = valD;
 
-  calculate();
 }
 
 
@@ -70,7 +69,6 @@ function syncFromManual(campo) {
     v = parseInt(document.getElementById('dManual').value);
     if (v >= 1 && v <= 5) setSelectValue('danno', String(v));
   }
-  calculate();
 }
 
 
