@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RiskFood — Calcolo Rischio Ristorativo</title>
+
+  <!-- font google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- libreria qr code in locale, funziona anche senza internet -->
+  <script src="qrcode.min.js"></script>
+</head>
+<body>
+
+<!-- header -->
+<header>
+  <nav class="nav">
+    <div class="logo">Risk<span>Food</span></div>
+
+    <!-- id="navLinks" serve al js per aprire e chiudere il menu su mobile -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#formula">Formula</a></li>
+      <li><a href="#calcolatore">Calcolatore</a></li>
+      <li><a href="#matrice">Matrice</a></li>
+      <li><a href="#rischi">Catalogo Rischi</a></li>
+      <li><a href="#download">Download</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Apri menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- hero -->
+  <div class="hero">
+    <div class="hero-badge">✦ Settore Agroalimentare &amp; Ristorazione</div>
+    <h1>Valutazione del <em>Fattore di Rischio</em><br>per le Imprese Ristorative</h1>
+   <p>Pagina web per il calcolo del livello di rischio (R = P x D) nelle attività di ristorazione ai sensi del D.Lgs. 81/08.</p>
+    <a href="#calcolatore" class="hero-cta">
+      Vai al Calcolatore
+    </a>
+  </div>
+</header>
+
+
+<!-- formula -->
+<section class="formula-section" id="formula">
+  <div class="container">
+    <div class="section-label">Metodologia</div>
+    <h2 class="section-title">La Formula del Rischio</h2>
+    <p class="section-sub">Il rischio è calcolato secondo il modello matriciale previsto dal D.Lgs. 81/2008 e dalle linee guida INAIL per il settore della ristorazione.</p>
+
+    <div class="formula-box">
+      <div class="formula-label">Formula di Riferimento</div>
+      <div class="formula-eq">R <span class="times">=</span> P <span class="times">×</span> D</div>
+      <p class="formula-note">Rischio &nbsp;=&nbsp; Probabilità &nbsp;×&nbsp; Gravità del Danno</p>
+    </div>
+
+    <!-- tre card che spiegano R, P e D -->
+    <div class="formula-vars">
+      <div class="var-card">
+        <div class="var-symbol">R</div>
+        <h4>Rischio</h4>
+        <p>Indice complessivo che esprime il livello di pericolo. Varia da 1 (trascurabile) a 25 (critico).</p>
+      </div>
+      <div class="var-card">
+        <div class="var-symbol">P</div>
+        <h4>Probabilità</h4>
+        <p>Quanto è probabile che accada un infortunio. Scala da 1 (improbabile) a 5 (quasi certa).</p>
+      </div>
+      <div class="var-card">
+        <div class="var-symbol">D</div>
+        <h4>Danno</h4>
+        <p>Quanto è grave il danno per il lavoratore. Scala da 1 (lieve) a 5 (gravissimo).</p>
+      </div>
+    </div>
+
+    <div class="ornament"><span>✦</span></div>
+    <h3 class="sub-heading">Scala di classificazione — R = P × D</h3>
+
+    <!-- tabella con i 4 livelli di rischio -->
+    <table class="scale-table">
+      <thead>
+        <tr>
+          <th>Valore R</th>
+          <th>Livello</th>
+          <th>Azioni richieste</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 – 4</td>
+          <td><span class="badge badge-low">BASSO</span></td>
+          <td>Monitoraggio periodico, nessuna azione immediata.</td>
+        </tr>
+        <tr>
+          <td>5 – 9</td>
+          <td><span class="badge badge-med">MEDIO</span></td>
+          <td>Misure correttive nel breve periodo.</td>
+        </tr>
+        <tr>
+          <td>10 – 16</td>
+          <td><span class="badge badge-hi">ALTO</span></td>
+          <td>Intervento immediato e revisione delle procedure.</td>
+        </tr>
+        <tr>
+          <td>17 – 25</td>
+          <td><span class="badge badge-crit">CRITICO</span></td>
+          <td>Sospensione dell'attività fino alla risoluzione del pericolo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- calcolatore -->
+<section class="calc-section" id="calcolatore">
+  <div class="container">
+    <div class="section-label">Calcolatore</div>
+    <h2 class="section-title">Calcolatore della Matrice di Rischio</h2>
+    <p class="section-sub">Seleziona il tipo di rischio, imposta P e D e ottieni subito la valutazione con le misure di prevenzione consigliate.</p>
+
+    <div class="calc-card">
+      <!-- due colonne affiancate, su mobile si impilano -->
+      <div class="calc-two-col">
+
+        <!-- colonna sinistra: input -->
+        <div class="col-input">
+
+          <!-- menu a tendina con i rischi del settore ristorativo -->
+          <!-- dati rischio nei data-attribute: per aggiungere un rischio basta una nuova option, senza toccare main.js -->
+          <div class="field-group">
+            <label for="riskType"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px;"><path d="M3 2v7c0 1.1.9 2 2 2h0a2 2 0 0 0 2-2V2"/><path d="M5 2v20"/><path d="M19 2v20"/><path d="M19 12c1.5 0 2.5-1 2.5-3V5c0-2-1-3-2.5-3"/></svg>Tipologia di Rischio Ristorativo</label>
+            <select id="riskType" onchange="loadRiskPreset()">
+              <option value="">— Seleziona un rischio —</option>
+
+              <optgroup label="Rischi Fisici">
+                <option value="ustioni" data-p="3" data-d="3"
+                  data-desc="Bruciature da forni, piastre e friggitrici. Rischio molto comune in cucina.">
+                  Ustioni da superfici calde</option>
+                <option value="scivolamento" data-p="4" data-d="2"
+                  data-desc="Pavimenti bagnati o oleosi in cucina e sala. Prima causa di infortuni nel settore della ristorazione.">
+                  Scivolamento su pavimenti bagnati</option>
+                <option value="tagli" data-p="4" data-d="2"
+                  data-desc="Utilizzo quotidiano di coltelli, affettatrici e mandoline. Rischio elevato senza guanti antitaglio.">
+                  Tagli da utensili</option>
+              </optgroup>
+
+              <optgroup label="Rischi Chimici">
+                <option value="detersivi" data-p="2" data-d="3"
+                  data-desc="Contatto con detergenti e disinfettanti per la pulizia. Rischio di irritazione cutanea e respiratoria senza DPI.">
+                  Esposizione a prodotti chimici per la pulizia</option>
+                <option value="gas" data-p="2" data-d="4"
+                  data-desc="Perdita di gas dalle cucine a gas. Rischio esplosione o asfissia. Richiedere manutenzione periodica.">
+                  Perdita di gas</option>
+              </optgroup>
+
+              <optgroup label="Rischi Biologici (HACCP)">
+                <option value="cross" data-p="3" data-d="4"
+                  data-desc="Contatto tra alimenti crudi e cotti sulle stesse superfici. Rischio intossicazione alimentare nei clienti. Reg. CE 852/2004.">
+                  Contaminazione crociata alimenti</option>
+                <option value="catena" data-p="2" data-d="4"
+                  data-desc="Se il cibo non viene conservato alla giusta temperatura i batteri si moltiplicano. Obbligo HACCP.">
+                  Interruzione catena del freddo</option>
+                <option value="allergeni" data-p="3" data-d="5"
+                  data-desc="Omessa o errata dichiarazione degli allergeni ai clienti. Può causare shock anafilattico. Reg. UE 1169/2011.">
+                  Gestione allergeni (Reg. UE 1169/2011)</option>
+              </optgroup>
+
+              <optgroup label="Rischi Ergonomici / Organizzativi">
+                <option value="movimenti" data-p="4" data-d="2"
+                  data-desc="Movimenti ripetitivi durante taglio, impiattamento e pulizia. Rischio di disturbi muscolo-scheletrici (MSDs) nel tempo.">
+                  Movimenti ripetitivi (MSDs)</option>
+                <option value="stress" data-p="3" data-d="2"
+                  data-desc="Turni lunghi e ritmi alti in cucina causano stress cronico nei lavoratori. Previsto dal D.Lgs. 81/08.">
+                  Stress lavoro-correlato (SLC)</option>
+                <option value="elettrico" data-p="2" data-d="4"
+                  data-desc="Uso di apparecchi elettrici in ambienti umidi: lavastoviglie, miscelatori, forni. Manutenzione periodica indispensabile.">
+                  Rischio elettrico in ambienti umidi</option>
+              </optgroup>
+            </select>
+
+            <div class="risk-desc" id="riskDesc">Seleziona un rischio per vedere la descrizione.</div>
+          </div>
+
+          <div class="field-group">
+            <label for="prob">Probabilità (P) — da 1 a 5</label>
+            <select id="prob" onchange="calculate()">
+              <option value="">— seleziona —</option>
+              <option value="1">1 — Improbabile</option>
+              <option value="2">2 — Poco probabile</option>
+              <option value="3">3 — Possibile</option>
+              <option value="4">4 — Probabile</option>
+              <option value="5">5 — Quasi certa</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="danno">Gravità del Danno (D) — da 1 a 5</label>
+            <select id="danno" onchange="calculate()">
+              <option value="">— seleziona —</option>
+              <option value="1">1 — Lieve (nessuna lesione)</option>
+              <option value="2">2 — Modesto (lesione reversibile lieve)</option>
+              <option value="3">3 — Significativo (infortunio con prognosi)</option>
+              <option value="4">4 — Grave (invalidità parziale)</option>
+              <option value="5">5 — Gravissimo (morte o invalidità totale)</option>
+            </select>
+          </div>
+
+          <!--  secondo modo di inserire P e D, chi conosce già i suoi valori li scrive diretti, main.js poi riallinea le tendine -->
+          <div class="manual-row">
+            <div class="field-group">
+              <label for="pManual">P (inserimento diretto)</label>
+              <input type="number" id="pManual" min="1" max="5" placeholder="1–5"
+                     oninput="syncFromManual('p')" />
+            </div>
+            <div class="field-group">
+              <label for="dManual">D (inserimento diretto)</label>
+              <input type="number" id="dManual" min="1" max="5" placeholder="1–5"
+                     oninput="syncFromManual('d')" />
+            </div>
+          </div>
+
+          <button class="btn-calc" onclick="calculate()">▶ Calcola il Rischio R = P × D</button>
+        </div>
+
+        <!-- colonna destra risultati + misure di prevenzione -->
+        <div class="col-result">
+          <div class="result-card"><div class="result-card-header"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px;"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Risultati della Valutazione</div>
+            <div class="result-card-body">
+              <div class="result-row">
+                <span class="result-label">Rischio selezionato</span>
+                <span class="result-value" id="resType">—</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Probabilità (P)</span>
+                <span class="result-value" id="resP">—</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Gravità del Danno (D)</span>
+                <span class="result-value" id="resD">—</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Valore R calcolato</span>
+                <span class="result-value" id="resR">—</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Formula</span>
+                <span class="result-value" id="resFormula">R = — × — = —</span>
+              </div>
+              <!-- indicatore colorato del livello, la classe css cambia in base al risultato -->
+              <div class="risk-indicator empty" id="riskIndicator">
+                Seleziona un rischio e calcola per vedere il livello
+              </div>
+            </div>
+          </div>
+
+          <div class="measures-box">
+            <strong><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Misure di prevenzione consigliate</strong>
+            <ul id="measuresList">
+              <li style="color:#aaa; font-style:italic;">Calcola il rischio per vedere le misure consigliate.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- matrice -->
+<section class="matrix-section" id="matrice">
+  <div class="container">
+    <div class="section-label">Matrice 5×5</div>
+    <h2 class="section-title">Matrice di Rischio Visiva</h2>
+    <p class="section-sub">
+      Le 25 celle mostrano il valore R = P × D per ogni combinazione di probabilità e danno. Dopo il calcolo la cella del rischio selezionato viene evidenziata.
+    </p>
+
+    <!-- div vuoto apposta: le 25 celle le genera buildMatrix() in main.js, non volevo scriverle a mano -->
+    <div class="matrix-scroll">
+      <div class="matrix-grid" id="matrixGrid"></div>
+    </div>
+
+    <!-- legenda colori -->
+    <div class="matrix-legend">
+      <div class="legend-item"><div class="legend-dot dot-l"></div>Basso (R ≤ 4)</div>
+      <div class="legend-item"><div class="legend-dot dot-m"></div>Medio (R 5–9)</div>
+      <div class="legend-item"><div class="legend-dot dot-h"></div>Alto (R 10–16)</div>
+      <div class="legend-item"><div class="legend-dot dot-c"></div>Critico (R ≥ 17)</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- catalogo rischi -->
+<section id="rischi" class="risks-section">
+  <div class="container">
+    <div class="section-label">Catalogo Specifico Ristorazione</div>
+    <h2 class="section-title">Principali Rischi nel Settore Ristorativo</h2>
+    <p class="section-sub">Una selezione dei rischi più frequenti per operatori di cucina, sala e magazzino, con i relativi valori orientativi di P, D e R.</p>
+
+    <div class="risks-grid">
+      <div class="risk-card">
+        <div class="risk-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2E5C3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l9-15 4 7"/><path d="M14 13l4-7 3 5"/></svg></div>
+        <h4>Tagli da Utensili</h4>
+        <p>Tagli causati dall'utilizzo di coltelli, affettatrici e lame in cucina. Obbligatorio l'uso di guanti protettivi.</p>
+        <div class="risk-pills">
+          <span class="pill pill-p">P: 4</span>
+          <span class="pill pill-d">D: 2</span>
+          <span class="pill pill-r">R: 8 — Medio</span>
+        </div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B84C2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4c-1 2-3 3-3 6 0 1.5 1 2.5 1 4a3 3 0 0 1-6 0c0-1 .3-2 1-3-2 0-3 2-3 4a6 6 0 0 0 12 0c0-4-3-6-2-11z"/></svg></div>
+        <h4>Ustioni Termiche</h4>
+        <p>Contatto con forni fino a 250°C, friggitrici e vapore. Fondamentale l'uso di guanti termoresistenti e attrezzature adeguate.</p>
+        <div class="risk-pills">
+          <span class="pill pill-p">P: 3</span>
+          <span class="pill pill-d">D: 3</span>
+          <span class="pill pill-r">R: 9 — Medio</span>
+        </div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2C52A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg></div>
+        <h4>Scivolamento</h4>
+        <p>Pavimenti bagnati in cucina, sala e celle frigo. Segnaletica di pericolo e scarpe antiscivolo sono obbligatorie.</p>
+        <div class="risk-pills">
+          <span class="pill pill-p">P: 4</span>
+          <span class="pill pill-d">D: 2</span>
+          <span class="pill pill-r">R: 8 — Medio</span>
+        </div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="5.6" y1="5.6" x2="7.5" y2="7.5"/><line x1="16.5" y1="16.5" x2="18.4" y2="18.4"/><line x1="5.6" y1="18.4" x2="7.5" y2="16.5"/><line x1="16.5" y1="7.5" x2="18.4" y2="5.6"/></svg></div>
+        <h4>Gestione Allergeni</h4>
+        <p>Reg. UE 1169/2011: dichiarazione obbligatoria dei 14 allergeni. Errori nella gestione possono causare shock anafilattico.</p>
+        <div class="risk-pills">
+          <span class="pill pill-p">P: 3</span>
+          <span class="pill pill-d">D: 5</span>
+          <span class="pill pill-r pill-r-hi">R: 15 — Alto</span>
+        </div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#856404" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6l-4.5 9.5a1.5 1.5 0 0 0 1.4 2.5h10.2a1.5 1.5 0 0 0 1.4-2.5L14 9V3"/><line x1="7" y1="15" x2="17" y2="15"/></svg></div>
+        <h4>Prodotti Chimici per Pulizia</h4>
+        <p>Detergenti e disinfettanti possono causare irritazioni cutanee e respiratorie. Indispensabile l'uso di DPI appropriati.</p>
+        <div class="risk-pills">
+          <span class="pill pill-p">P: 2</span>
+          <span class="pill pill-d">D: 3</span>
+          <span class="pill pill-r">R: 6 — Medio</span>
+        </div>
+      </div>
+      <div class="risk-card">
+       <div class="risk-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2C52A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></div>
+        <h4>Catena del Freddo</h4>
+        <p>L'interruzione della conservazione refrigerata favorisce la proliferazione batterica. Il monitoraggio HACCP è obbligatorio.</p>
+        <div class="risk-pills">
+          <span class="pill pill-p">P: 2</span>
+          <span class="pill pill-d">D: 4</span>
+          <span class="pill pill-r">R: 8 — Medio</span>
+        </div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7A7060" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 6.7 3"/><path d="M21 12a9 9 0 0 1-9 9 9 9 0 0 1-6.7-3"/><polyline points="18 2 18.7 6 15 6.5"/><polyline points="6 22 5.3 18 9 17.5"/></svg></div>
+        <h4>Contaminazione Crociata</h4>
+        <p>Contatto tra alimenti crudi e cotti sulle stesse superfici. Fondamentale separare le lavorazioni. Reg. CE 852/2004.</p>
+        <div class="risk-pills">
+          <span class="pill pill-p">P: 3</span>
+          <span class="pill pill-d">D: 4</span>
+          <span class="pill pill-r pill-r-hi">R: 12 — Alto</span>
+        </div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
+        <h4>Rischio Elettrico</h4>
+        <p>Apparecchi elettrici in ambienti umidi: lavastoviglie, miscelatori. Manutenzione periodica e verifica impianti indispensabili.</p>
+        <div class="risk-pills">
+          <span class="pill pill-p">P: 2</span>
+          <span class="pill pill-d">D: 4</span>
+          <span class="pill pill-r">R: 8 — Medio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- download e qr code -->
+<section class="download-section" id="download">
+  <div class="container">
+    <div class="download-inner">
+      <div class="download-text">
+        <div class="section-label">Documentazione</div>
+        <h2 class="section-title" style="color:var(--cream);">Scarica la Guida Completa</h2>
+        <p style="color:rgba(250,247,242,0.65); margin-bottom:1.8rem; font-size:.97rem; max-width:520px;">
+          Scarica la guida completa in PDF con le linee guida per la valutazione dei rischi nella ristorazione e i riferimenti normativi del settore.
+        </p>
+
+        <a href="guida_rischio_ristorativo.pdf" download class="dl-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h4a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          </svg>
+          Scarica PDF Gratuito
+        </a>
+        <p class="dl-note">Aggiornato al D.Lgs. 81/2008 e successive modifiche · Versione 2.1</p>
+      </div>
+
+      <!-- qr code generato da main.js con qrcode.js -->
+      <div class="qr-wrapper">
+        <div class="qr-box">
+          <div id="qrcode"></div>
+        </div>
+        <p class="qr-caption">Scansiona per scaricare</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- footer -->
+<footer>
+  <p><strong>RiskFood</strong> - Progetto di Volpe Luciana</p>
+  <p class="footer-note">Project work — Università Telematica Pegaso · Informatica per le Aziende Digitali · D.Lgs. 81/08</p>
+</footer>
+
+<!-- js -->
+<script src="main.js"></script>
+</body>
+</html>
