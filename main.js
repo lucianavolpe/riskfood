@@ -24,7 +24,6 @@ if (typeof QRCode !== 'undefined') {
     '<p>QR non disponibile</p>';
 }
 
-
 // Quando scelgo un rischio dal menu precompilo P e D
 function loadRiskPreset() {
   var sel = document.getElementById('riskType');
@@ -55,7 +54,6 @@ function setSelectValue(id, val) {
       break;
     }
   }
-}
 
 
 // Se scrive il numero a mano aggiorno anche la select
@@ -89,7 +87,7 @@ function calculate() {
     : '—';
   if (nomeRischio === '— Seleziona un rischio —') nomeRischio = '(nessuno selezionato)';
 
-  // se manca P o D mi fermo qui, perchè nelle prime prove il risultato veniva NaN
+  // se manca P o D mi fermo qui, perché nelle prime prove il risultato veniva NaN
   if (isNaN(P) || isNaN(D)) {
     document.getElementById('resType').textContent = nomeRischio;
     return;
@@ -142,7 +140,7 @@ function calculate() {
   indicatore.textContent = testo;
   indicatore.className = 'risk-indicator ' + classeCss;
 
-  // aggiorno le misure di prevenzione e la matrice
+  // Aggiorno le misure di prevenzione e la matrice
   showMeasures(livello);
   buildMatrix(P, D);
 }
@@ -218,7 +216,6 @@ function buildMatrix(evidenziaP, evidenziaD) {
       aggiungiCella(griglia, r, 'cell ' + classe + (attiva ? ' highlighted-cell' : ''));
     }
   }
-}
 
 // Restituisce la classe css in base al valore R
 function getClasseCella(r) {
