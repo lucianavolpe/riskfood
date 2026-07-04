@@ -463,7 +463,7 @@ section { padding: 4rem 0; }
 /* matrice visiva 5x5 */
 .matrix-section { background: var(--soft); }
 
-/* scroll orizzontale sulla matrice quando lo schermo è troppo stretto */
+/* scroll orizzontale sulla matrice quando lo schermo Ã¨ troppo stretto */
 .matrix-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -672,7 +672,7 @@ footer strong { color: var(--gold); }
   .qr-wrapper { order: -1; }
 }
 
-/* regole aggiuntive per gli schermi più piccoli */
+/* regole aggiuntive per gli schermi piÃ¹ piccoli */
 @media (max-width: 480px) {
   .hero         { padding: 3rem 1rem 2.5rem; }
   .formula-box  { padding: 1.5rem 1rem; }
