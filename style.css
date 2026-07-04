@@ -44,7 +44,6 @@ header {
   background-position: center;
   color: var(--cream);
   position: relative;
-  overflow: hidden;
 }
 
 /* imposto un layout flessibile per la barra di navigazione */
@@ -673,7 +672,7 @@ footer strong { color: var(--gold); }
   .qr-wrapper { order: -1; }
 }
 
-/* regole aggiuntive per telefoni piccoli sotto i 480px */
+/* regole aggiuntive per gli schermi più piccoli */
 @media (max-width: 480px) {
   .hero         { padding: 3rem 1rem 2.5rem; }
   .formula-box  { padding: 1.5rem 1rem; }
