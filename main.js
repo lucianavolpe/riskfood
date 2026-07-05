@@ -5,7 +5,13 @@
 document.getElementById('hamburger').addEventListener('click', function () {
   document.getElementById('navLinks').classList.toggle('open');
 });
-
+// Quando clicco una voce del menu, lo richiudo (utile su mobile)
+var vociMenu = document.querySelectorAll('#navLinks a');
+for (var i = 0; i < vociMenu.length; i++) {
+  vociMenu[i].addEventListener('click', function () {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+}
 
 // Compongo l'indirizzo diretto del pdf della guida, così inquadrando il qr si apre subito il documento
 if (typeof QRCode !== 'undefined') {
