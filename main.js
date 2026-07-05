@@ -54,6 +54,7 @@ function setSelectValue(id, val) {
       break;
     }
   }
+}
 
 
 // Se scrive il numero a mano aggiorno anche la select
@@ -216,6 +217,7 @@ function buildMatrix(evidenziaP, evidenziaD) {
       aggiungiCella(griglia, r, 'cell ' + classe + (attiva ? ' highlighted-cell' : ''));
     }
   }
+}
 
 // Restituisce la classe css in base al valore R
 function getClasseCella(r) {
@@ -237,4 +239,4 @@ function aggiungiCella(griglia, testo, classi) {
 
 // costruisce la matrice vuota quando la pagina viene aperta
 // passando 0,0 nessuna cella viene evidenziata
-buildMatrix(0, 0);
+buildMatrix(0, 0)
