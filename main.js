@@ -239,4 +239,4 @@ function aggiungiCella(griglia, testo, classi) {
 
 // costruisce la matrice vuota quando la pagina viene aperta
 // passando 0,0 nessuna cella viene evidenziata
-buildMatrix(0, 0)
+buildMatrix(0, 0);
