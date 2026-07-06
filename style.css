@@ -19,24 +19,21 @@
 }
 
 
-/* l'asterisco applica queste regole a tutti gli elementi della pagina */
-/* box-sizing include padding e bordo nella larghezza dell'elemento */
-/* margin e padding a zero per evitare spazi indesiderati di default */
+/* regole di base valide per tutta la pagina */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--text);
-  line-height: 1.7;
-  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;  /* font principale del testo */
+  background: var(--cream); /* colore di sfondo principale */
+  color: var(--text); /* colore del testo principale */
+  line-height: 1.7; /* distanza tra le righe del testo */
+  font-size: 16px; /* dimensione base del testo */
 }
 
 
 /* header e navigazione */
 header {
-  /* foto ristorante con overlay verde scuro per leggibilita del testo */
+  /* foto ristorante e posizione */
   background:
     linear-gradient(rgba(14,35,23,0.68), rgba(14,35,23,0.72)),
     url(https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1920&q=80);
@@ -47,7 +44,7 @@ header {
 }
 
 /* imposto un layout flessibile per la barra di navigazione */
-/* justify-content space-between mette logo a sinistra e menu a destra */
+/* logo a sinistra e menu a destra */
 .nav {
   display: flex;
   align-items: center;
@@ -58,6 +55,7 @@ header {
   z-index: 1000;
 }
 
+/* logo del sito */
 .logo {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
@@ -66,7 +64,7 @@ header {
 }
 .logo span { color: var(--cream); }
 
-/* menu desktop */
+/* menu di navigazione */
 .nav-links {
   display: flex;
   gap: 1.8rem;
@@ -82,7 +80,7 @@ header {
 }
 .nav-links a:hover { color: var(--gold); }
 
-/* hamburger - nascosto su desktop */
+/* pulsante hamburger - nascosto su desktop, appare su mobile */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -101,7 +99,7 @@ header {
 }
 
 
-/* hero */
+/* hero, la parte iniziale con titolo e pulsante */
 .hero {
   position: relative;
   z-index: 2;
@@ -111,6 +109,7 @@ header {
   text-align: center;
 }
 
+/*etichetta sopra il titolo */
 .hero-badge {
   display: inline-block;
   background: rgba(201,168,76,0.15);
@@ -125,8 +124,7 @@ header {
   margin-bottom: 1.5rem;
 }
 
-/* clamp imposta una dimensione adattiva: minimo 2rem, ideale 5vw, massimo 3.6rem */
-/* in questo modo il titolo si ridimensiona automaticamente su tutti gli schermi */
+/* titolo principale */
 .hero h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 5vw, 3.6rem);
@@ -143,6 +141,7 @@ header {
   margin: 0 auto 2.5rem;
 }
 
+/* pulsante vai al calcolatore */
 .hero-cta {
   display: inline-flex;
   align-items: center;
@@ -157,7 +156,7 @@ header {
   transition: transform .2s, box-shadow .2s;
   box-shadow: 0 4px 20px rgba(201,168,76,0.35);
 }
-/* effetto hover: quando passo col mouse il bottone si solleva leggermente */
+/* effetto hover quando passo col mouse il bottone si solleva leggermente */
 .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,168,76,0.45); }
 
 
@@ -169,6 +168,7 @@ header {
 }
 section { padding: 4rem 0; }
 
+/*etichetta e titolo delle sezioni */
 .section-label {
   font-size: 0.75rem;
   font-weight: 600;
@@ -178,6 +178,7 @@ section { padding: 4rem 0; }
   margin-bottom: .6rem;
 }
 
+/* titolo principale delle sezioni */
 .section-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.5rem, 3vw, 2.2rem);
@@ -185,6 +186,7 @@ section { padding: 4rem 0; }
   margin-bottom: 1rem;
   line-height: 1.25;
 }
+/* sottotitolo delle sezioni */
 .section-sub {
   color: var(--muted);
   max-width: 640px;
@@ -217,6 +219,7 @@ section { padding: 4rem 0; }
 /* sezione formula */
 .formula-section { background: var(--soft); }
 
+/* riquadro formula */
 .formula-box {
   background: var(--dark);
   color: var(--cream);
@@ -250,7 +253,7 @@ section { padding: 4rem 0; }
 .formula-eq .times { color: var(--gold); margin: 0 .3rem; }
 .formula-note { color: rgba(250,247,242,0.55); font-size: .85rem; margin-top: .8rem; }
 
-/* tre card R, P, D */
+/* tre card che spiegano R, P, D */
 .formula-vars {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -270,7 +273,7 @@ section { padding: 4rem 0; }
 .var-card p  { font-size: .82rem; color: var(--muted); line-height: 1.5; }
 
 
-/* tabella scala rischio */
+/* tabella della scala di rischio */
 .scale-table {
   width: 100%;
   border-collapse: collapse;
@@ -296,7 +299,7 @@ section { padding: 4rem 0; }
 }
 .scale-table tr:last-child td { border-bottom: none; }
 
-/* badge livelli */
+/* badge colorati dei livelli (basso, medio, alto, critico) */
 .badge { display: inline-block; border-radius: 4px; padding: .2rem .7rem; font-weight: 600; font-size: .8rem; }
 .badge-low  { background: #E8F4ED; color: #155724; }
 .badge-med  { background: #FFF3CD; color: #856404; }
@@ -304,9 +307,10 @@ section { padding: 4rem 0; }
 .badge-crit { background: #F8D7DA; color: #721C24; }
 
 
-/* calcolatore */
+/* sezione calcolatore */
 .calc-section { background: var(--cream); }
 
+/*riquadro bianco che contiene il calcolatore */
 .calc-card {
   background: #fff;
   border-radius: var(--radius);
@@ -324,7 +328,7 @@ section { padding: 4rem 0; }
   align-items: start;
 }
 
-/* campi manuali P e D */
+/* riga con i 2 campi manuali P e D */
 .manual-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -341,7 +345,7 @@ section { padding: 4rem 0; }
   color: var(--text);
 }
 
-/* stile select e input */
+/* stile del menu a tendina e dei campi numerici */
 .field-group select,
 .field-group input[type="number"] {
   width: 100%;
@@ -367,6 +371,7 @@ section { padding: 4rem 0; }
 }
 .field-group input[type="number"] { background-image: none; }
 
+/* descrizione del rischio calcolato */
 .risk-desc {
   margin-top: .55rem;
   font-size: .82rem;
@@ -376,7 +381,7 @@ section { padding: 4rem 0; }
   line-height: 1.5;
 }
 
-/* bottone calcola */
+/* bottone calcolatore rischio */
 .btn-calc {
   width: 100%;
   margin-top: .5rem;
@@ -397,7 +402,7 @@ section { padding: 4rem 0; }
 .btn-calc:active { transform: translateY(0); }
 
 
-/* riquadro risultati */
+/* riquadro dei risultati */
 .result-card {
   border-radius: var(--radius);
   overflow: hidden;
@@ -416,6 +421,7 @@ section { padding: 4rem 0; }
   background: #fff;
 }
 
+/* riga dei risultati con etichetta a sinistra e valore a destra */
 .result-row {
   display: flex;
   justify-content: space-between;
@@ -429,7 +435,7 @@ section { padding: 4rem 0; }
 .result-label { color: var(--muted); white-space: nowrap; flex-shrink: 0; }
 .result-value { font-weight: 700; color: var(--text); text-align: right; }
 
-/* indicatore colorato livello */
+/* indicatore colorato livello di rischio */
 .risk-indicator {
   margin-top: 1rem;
   padding: 1rem 1.2rem;
@@ -448,7 +454,7 @@ section { padding: 4rem 0; }
 .risk-indicator.crit  { background: #F8D7DA; color: #721C24; border-color: #F5C2C7; }
 .risk-indicator.empty { background: var(--soft); color: var(--muted); border-color: #D8D3C8; font-weight: 400; font-size: .88rem; }
 
-/* box misure di prevenzione - sempre visibile */
+/* box misure di prevenzione */
 .measures-box {
   background: var(--soft);
   border-radius: 8px;
@@ -460,17 +466,17 @@ section { padding: 4rem 0; }
 .measures-box ul { padding-left: 1.1rem; color: var(--muted); line-height: 1.9; margin: 0; }
 
 
-/* matrice visiva 5x5 */
+/* sezione matrice visiva 5x5 */
 .matrix-section { background: var(--soft); }
 
-/* scroll orizzontale sulla matrice quando lo schermo è troppo stretto */
+/* permette di scorrere la matrice quando lo schermo è troppo stretto */
 .matrix-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding-bottom: .5rem;
 }
 
-/* griglia 5x5 prima colonna 60px per le etichette, poi 5 colonne uguali */
+/* griglia della matrice 5x5 prima colonna 60px per le etichette, poi 5 colonne uguali */
 .matrix-grid {
   display: grid;
   grid-template-columns: 60px repeat(5, 1fr);
@@ -479,7 +485,7 @@ section { padding: 4rem 0; }
   max-width: 580px;
 }
 
-/* celle dati */
+/* le celle con i dati */
 .matrix-grid .cell {
   padding: .65rem .3rem;
   text-align: center;
@@ -489,7 +495,7 @@ section { padding: 4rem 0; }
   line-height: 1.2;
 }
 
-/* intestazioni colonne */
+/* intestazioni delle colonne */
 .header-cell {
   background: var(--dark);
   color: var(--gold);
@@ -502,7 +508,7 @@ section { padding: 4rem 0; }
   text-align: center;
 }
 
-/* intestazioni righe */
+/* intestazioni delle righe */
 .row-header {
   background: var(--dark);
   color: var(--gold);
@@ -517,7 +523,7 @@ section { padding: 4rem 0; }
   padding: .3rem;
 }
 
-/* colori celle per livello */
+/* colori delle celle in base al livello */
 .cell.l { background: #C6E0C9; color: #1B4D28; }
 .cell.m { background: #FEF3C7; color: #78450D; }
 .cell.h { background: #FDD5B8; color: #7D2B00; }
@@ -533,7 +539,7 @@ section { padding: 4rem 0; }
   z-index: 1;
 }
 
-/* legenda */
+/* legenda dei colori dotto la matrice */
 .matrix-legend {
   display: flex;
   gap: 1.4rem;
@@ -554,7 +560,7 @@ section { padding: 4rem 0; }
 .dot-c { background: #F8BFBF; }
 
 
-/* catalogo rischi */
+/* sezione catalogo rischi */
 .risks-section { background: var(--cream); }
 
 .risks-grid {
@@ -563,6 +569,7 @@ section { padding: 4rem 0; }
   gap: 1.2rem;
 }
 
+/*singola card di un rischio con icona, titolo, descrizione e pillole dei livelli di rischio */
 .risk-card {
   background: #fff;
   border-radius: var(--radius);
@@ -576,6 +583,7 @@ section { padding: 4rem 0; }
 .risk-card h4 { font-size: .95rem; font-weight: 600; margin-bottom: .4rem; }
 .risk-card p  { font-size: .83rem; color: var(--muted); line-height: 1.55; }
 
+/* pillole colorate dei livelli di rischio per ogni rischio */
 .risk-pills { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .8rem; }
 .pill       { font-size: .72rem; padding: .2rem .6rem; border-radius: 100px; font-weight: 600; }
 .pill-p    { background: #E8F4ED; color: #1B4D28; }
@@ -584,9 +592,10 @@ section { padding: 4rem 0; }
 .pill-r-hi { background: #FFE0CC; color: #7d2b00; }
 
 
-/* download e qr code */
+/* sezione download e qr code */
 .download-section { background: var(--dark); }
 
+/* griglia con due colonne: a sinistra il pulsante di download, a destra il qr code */
 .download-inner {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -595,6 +604,7 @@ section { padding: 4rem 0; }
   padding: 4rem 0;
 }
 
+/* pulsante di download */
 .dl-btn {
   display: inline-flex;
   align-items: center;
@@ -612,6 +622,7 @@ section { padding: 4rem 0; }
 .dl-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,168,76,0.45); }
 .dl-note { margin-top: 1rem; font-size: .8rem; color: rgba(250,247,242,0.4); }
 
+/* riquadro bianco che contiene il qr code */
 .qr-wrapper { text-align: center; }
 .qr-box {
   background: #fff;
@@ -630,7 +641,7 @@ section { padding: 4rem 0; }
 }
 
 
-/* footer */
+/* footer in fondo alla pagina */
 footer {
   background: #071510;
   color: rgba(250,247,242,0.45);
